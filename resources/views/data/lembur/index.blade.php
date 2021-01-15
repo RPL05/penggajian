@@ -16,7 +16,7 @@
         <div class="py-3">
             <h5 class="text-strong">Data Lembur Pegawai</h5>
         </div>
-        <table class="table">
+        <table class="table table-striped">
             <thead>
               <tr>
                 <th>Nip</th>
@@ -37,7 +37,7 @@
                     <td>Rp. 2.500.000</td>
                     <td>01 Januari 2020</td>
                     <td>
-                        <button class="btn btn-outline btn-sm" style="background-color:#B0E0E6;">Lembur Pegawai</button>
+                        <a href="{{ route('data.lembur.create') }}" class="btn btn-outline btn-sm" style="background-color:#B0E0E6;">Lembur Pegawai</a>
                     </td>
                 </tr>
             </tbody>

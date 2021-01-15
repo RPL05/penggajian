@@ -10,4 +10,8 @@ class DatalemburController extends Controller
     {
         return view('data.lembur.index');
     }
+    public function create()
+    {
+        return view('data.lembur.create');
+    }
 }

@@ -15,6 +15,15 @@ class CreateLemburpegawaisTable extends Migration
     {
         Schema::create('lemburpegawais', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('datapegawai_id');
+            $table->string('nip')->unique();
+            $table->string('nama');
+            $table->string('no_rek')->unique();
+            $table->string('jabatan');
+            $table->string('gaji_pokok');
+            $table->string('tgl_masuk');
+            $table->string('jam_lembur');
+            $table->string('uang_lembur');
             $table->timestamps();
         });
     }

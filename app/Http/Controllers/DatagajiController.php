@@ -10,4 +10,8 @@ class DatagajiController extends Controller
     {
         return view('data.gaji.index');
     }
+    public function create()
+    {
+        return view('data.gaji.create');
+    }
 }

@@ -8,8 +8,19 @@
                 <ol class="breadcrumb bg-white">
                     <li class="breadcrumb-item active" aria-current="page">
                         <h6 style="margin-left: -18px;">Aplikasi Penggajian Karyawan</h6>
-                        {{--  <img src="{{ asset('image/download (1).jpg') }}" class="rounded-circle" width="30" height="30" alt="">  --}}
+
                     </li>
+                    {{--  <div class="d-flex" style="margin-left: auto;">
+                        <img src="{{ asset('image/images.jpg') }}" alt="" class="rounded-circle" width="27px" height="27px">
+                        <div class="dropdown show px-2 mt-1">
+                            <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <a class="dropdown-item" href="#">Login</a>
+                              <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </div>
+                    </div>  --}}
                 </ol>
             </nav>
         </div>
@@ -18,11 +29,11 @@
             <h5 class="text-strong py-2">Data Pegawai</h5>
         </div>
         <div class="mb-3">
-            <a href="" class="btn btn-warning py-2" style="background-color: #F0E68C;">
+            <a href="{{ route('data.pegawai.tampil-create') }}" class="btn btn-warning py-2" style="background-color: #F0E68C;">
               tambah pegawai
           </a>
           </div>
-        <table class="table">
+        <table class="table table-striped">
             <thead>
               <tr>
                 <th>Nip</th>
@@ -33,17 +44,25 @@
               </tr>
             </thead>
             <tbody>
+                @forelse ($datapegawais as $datapegawai)
                 <tr>
-                    <td>1234567</td>
-                    <td>Rachmat Ababil</td>
-                    <td>Rp. 2.500.000</td>
-                    <td>01 Januari 2020</td>
+                    <td>{{ $datapegawai->nip }}</td>
+                    <td>{{ $datapegawai->nama }}</td>
+                    <td>{{ $datapegawai->gaji_pokok }}</td>
+                    <td>{{ $datapegawai->tanggal_masuk }}</td>
                     <td>
                         <button class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</button>
                         <button class="btn btn-outline btn-sm" style="background-color: 	#ff9b9b;">Hapus</button>
                         <button class="btn btn-outline btn-sm" style="background-color: #86c1c9;">Transfer Gaji</button>
                     </td>
                 </tr>
+                @empty
+                    <tr>
+                        <td colspan="5">
+                            Data Pegawai Belum Tersedia
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
       </div>

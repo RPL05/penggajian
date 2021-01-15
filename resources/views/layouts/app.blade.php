@@ -51,9 +51,11 @@
                             </ul>
                         </div>
                     </nav>
-                    <main class="py-4">
-                        @yield('content')
-                    </main>
+                    <div class="col-md-10">
+                        <main class="py-4">
+                            @yield('content')
+                        </main>
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,7 +15,9 @@ class CreateDatagajisTable extends Migration
     {
         Schema::create('datagajis', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('datapegawai_id');
             $table->string('nama');
+            $table->string('no_rek')->unique();
             $table->string('gaji_pokok');
             $table->string('jam_lembur');
             $table->string('uang_lembur');
