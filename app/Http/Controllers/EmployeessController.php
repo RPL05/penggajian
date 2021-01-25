@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Datapegawai;
+use App\Employees;
 use Illuminate\Http\Request;
 
-class PegawaiController extends Controller
+class EmployeessController extends Controller
 {
-    public function __construct()
-    {
-        $this->pegawai = new Datapegawai();
-    }
     public function index()
     {
-        $datapegawais = Datapegawai::all();
-        return view('data.pegawai.index', compact('datapegawais'));
+        $employeess = Employees::all();
+        return view('data.employees.index', compact('employeess'));
     }
     public function create()
     {
-        return view('data.pegawai.create');
+        return view('data.employees.create');
     }
     public function store(Request $request)
     {
@@ -33,11 +29,11 @@ class PegawaiController extends Controller
             'tanggal_masuk'   => 'required',
             'agama'           => 'required',
             'jenis_kelamin'   => 'required',
-            'telepon'         => 'required',
+            'nomor_telepon'   => 'required',
             'alamat'          => 'required',
         ]);
 
-        $datapegawais = Datapegawai::create([
+        $employeess = Employees::create([
             'nip'             => $request->nip,
             'nama'            => $request->nama,
             'jabatan'         => $request->jabatan,
@@ -48,19 +44,33 @@ class PegawaiController extends Controller
             'tanggal_masuk'   => $request->tanggal_masuk,
             'agama'           => $request->agama,
             'jenis_kelamin'   => $request->jenis_kelamin,
-            'telepon'         => $request->telepon,
+            'nomor_telepon'   => $request->nomor_telepon,
             'alamat'          => $request->alamat,
         ]);
 
-        $datapegawais->save();
+        $employeess->save();
 
-        return redirect()->back()->with(['success' => 'data pegawai berhasil dibuat' ]);
+        return redirect()->back()->with(['success' => 'data karyawan berhasil dibuat' ]);
+    }
+    public function edit($id)
+    {
+        $employeess = Employees::findOrFail($id);
+
+        return view("data.employees.edit", compact('employeess'));
+    }
+    public function update(Request $request, $id)
+    {
+        $employeess = Employees::find($id);
+
+        $employeess->update($request-> all());
+
+        return redirect()->back()->with(['success' => 'data karyawan berhasil diedit' ]);
     }
     public function destroy($id)
     {
-        $datapegawais = Datapegawai::find($id);
+        $employeess = Employees::find($id);
 
-        $datapegawais -> delete($datapegawais->all());
+        $employeess -> delete($employeess->all());
 
         return redirect()->back();
     }

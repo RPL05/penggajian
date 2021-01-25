@@ -26,43 +26,39 @@
         </div>
       <div class="col-md-12">
         <div class="">
-            <h5 class="text-strong py-2">Data Pegawai</h5>
+            <h5 class="text-strong py-2">Data Payment</h5>
         </div>
         <div class="mb-3">
-            <a href="{{ route('data.pegawai.tampil-create') }}" class="btn btn-warning py-2" style="background-color: #F0E68C;">
-              tambah pegawai
+            <a href="{{ route('data.payment.create') }}" class="btn btn-warning py-2" style="background-color: #F0E68C;">
+              tambah payment
           </a>
           </div>
         <table class="table table-striped">
             <thead>
               <tr>
                 <th>Nip</th>
-                <th>Nama</th>
-                <th>Gaji Pokok</th>
-                <th>Tanggal Masuk</th>
+                <th>Nomor Rekening</th>
+                <th>Total Gaji</th>
+                <th>Tanggal Transfer</th>
                 <th>Option</th>
               </tr>
             </thead>
             <tbody>
-                @forelse ($datapegawais as $datapegawai)
                 <tr>
-                    <td>{{ $datapegawai->nip }}</td>
-                    <td>{{ $datapegawai->nama }}</td>
-                    <td>{{ $datapegawai->gaji_pokok }}</td>
-                    <td>{{ $datapegawai->tanggal_masuk }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        <button class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</button>
-                        <button class="btn btn-outline btn-sm" style="background-color: 	#ff9b9b;">Hapus</button>
-                        <button class="btn btn-outline btn-sm" style="background-color: #86c1c9;">Transfer Gaji</button>
+                        <form action="" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a href="" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
+                            <button class="btn btn-outline btn-sm" style="background-color: #ff9b9b;">Delete</button>
+                            <a href="http://" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
+                        </form>
                     </td>
                 </tr>
-                @empty
-                    <tr>
-                        <td colspan="5">
-                            Data Pegawai Belum Tersedia
-                        </td>
-                    </tr>
-                @endforelse
             </tbody>
         </table>
       </div>

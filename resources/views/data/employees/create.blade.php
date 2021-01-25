@@ -5,11 +5,11 @@
     <div class="row d-flex">
       <div class="col-md-12">
         <div class="">
-            <h5 class="text-strong py-2">Create Pegawai</h5>
+            <h5 class="text-strong py-2">From Create Employees</h5>
         </div>
         <div class="card border-0 shadow">
           <div class="card-body">
-            <form action="{{ route('data.pegawai.store') }}" enctype="multipart/form-data" method="post">
+            <form action="{{ route('data.employees.store') }}" enctype="multipart/form-data" method="post">
                 @csrf
                 @if(session('success'))
                     <div class="alert alert-success">
@@ -30,7 +30,15 @@
                             <input type="text" name="nama" id="nama" value="" class="form-control" required>
                             <span class="text-danger" id="nama"></span>
                         </div>
-                    </div><div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="jabatan">Jabatan</label>
+                            <input type="text" name="jabatan" id="jabatan" value="" class="form-control" required>
+                            <span class="text-danger" id="jabatan"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="gaji_pokok">Gaji Pokok</label>
                             <input type="text" name="gaji_pokok" id="gaji_pokok" value="" class="form-control" required>
@@ -86,31 +94,18 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="telepon">Telepon</label>
-                            <input type="number" name="telepon" id="telepon" value="" class="form-control" required>
-                            <span class="text-danger" id="telepon"></span>
+                            <label for="nomor_telepon">Nomor Telepon</label>
+                            <input type="text" name="nomor_telepon" id="nomor_telepon" value="" class="form-control" required>
+                            <span class="text-danger" id="nomor_telepon"></span>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
                             <input type="text" name="alamat" id="alamat" value="" class="form-control" required>
                             <span class="text-danger" id="alamat"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="Keterangan">
-                                Keterangan
-                            </label>
-                            <textarea name="keterangan"
-                                      id=""
-                                      class="form-control"
-                                      cols="30"
-                                      rows="5">
-                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -118,7 +113,7 @@
                     <button type="submit" class="btn btn-outline-info">
                         Save
                     </button>
-                    <a href="{{route('data.pegawai.tampil-index')}}" class="btn btn-outline-secondary">Kembali</a>
+                    <a href="{{route('data.employees.index')}}" class="btn btn-outline-secondary">Kembali</a>
                 </div>
             </form>
           </div>

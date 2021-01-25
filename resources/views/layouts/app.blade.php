@@ -34,19 +34,16 @@
                                     <a href="{{ route('penggajian.home.form-index') }}" class="nav-link text-light">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('data.pegawai.tampil-index') }}" class="nav-link text-light">Data Pegawai</a>
+                                    <a href="{{ route('data.employees.index') }}" class="nav-link text-light">Employees</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('data.gaji.index') }}" class="nav-link text-light">Data Gaji</a>
+                                    <a href="{{ route('data.type.index') }}" class="nav-link text-light">Type</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('data.lembur.show-index') }}" class="nav-link text-light">Lembur Pegawai</a>
+                                    <a href="{{ route('data.price.index') }}" class="nav-link text-light">Price</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="http://" class="nav-link text-light">Jabatan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="http://" class="nav-link text-light">Laporan</a>
+                                    <a href="{{ route('data.payment.index') }}" class="nav-link text-light">Payment</a>
                                 </li>
                             </ul>
                         </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLemburpegawaisTable extends Migration
+class CreateEmployeessTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,20 @@ class CreateLemburpegawaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('lemburpegawais', function (Blueprint $table) {
+        Schema::create('employeess', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('datapegawai_id');
             $table->string('nip')->unique();
             $table->string('nama');
-            $table->string('no_rek')->unique();
             $table->string('jabatan');
             $table->string('gaji_pokok');
-            $table->string('tgl_masuk');
-            $table->string('jam_lembur');
-            $table->string('uang_lembur');
+            $table->string('email');
+            $table->string('tempat_lahir');
+            $table->string('tanggal_lahir');
+            $table->string('tanggal_masuk');
+            $table->string('agama');
+            $table->string('jenis_Kelamin');
+            $table->string('nomor_telepon');
+            $table->string('alamat');
             $table->timestamps();
         });
     }
@@ -35,6 +38,6 @@ class CreateLemburpegawaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lemburpegawais');
+        Schema::dropIfExists('employeess');
     }
 }

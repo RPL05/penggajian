@@ -8,6 +8,7 @@
                 <ol class="breadcrumb bg-white">
                     <li class="breadcrumb-item active" aria-current="page">
                         <h6 style="margin-left: -18px;">Aplikasi Penggajian Karyawan</h6>
+
                     </li>
                     {{--  <div class="d-flex" style="margin-left: auto;">
                         <img src="{{ asset('image/images.jpg') }}" alt="" class="rounded-circle" width="27px" height="27px">
@@ -24,31 +25,48 @@
             </nav>
         </div>
       <div class="col-md-12">
-        <div class="py-4">
-            <h5 class="text-strong">Data Gaji Karyawan</h5>
+        <div class="">
+            <h5 class="text-strong py-2">Data Karyawan</h5>
         </div>
+        <div class="mb-3">
+            <a href="{{ route('data.employees.create') }}" class="btn btn-warning py-2" style="background-color: #F0E68C;">
+              tambah karyawan
+          </a>
+          </div>
         <table class="table table-striped">
             <thead>
               <tr>
+                <th>Nip</th>
                 <th>Nama</th>
                 <th>Gaji Pokok</th>
-                <th>Jam Lembur</th>
-                <th>Uang Lembur</th>
-                <th>Tgl. Transfer</th>
+                <th>Tanggal Masuk</th>
                 <th>Option</th>
               </tr>
             </thead>
             <tbody>
+                @forelse ($employeess as $employees)
                 <tr>
-                    <td>Rachmat Ababil</td>
-                    <td>Rp. 2.500.000</td>
-                    <td>3 jam</td>
-                    <td>Rp. 500.000</td>
-                    <td>01 Januari</td>
+                    <td>{{ $employees->nip }}</td>
+                    <td>{{ $employees->nama }}</td>
+                    <td>{{ $employees->gaji_pokok }}</td>
+                    <td>{{ $employees->tanggal_masuk }}</td>
                     <td>
-                        <a href="{{ route('data.gaji.creategaji') }}" class="btn btn-outline btn-sm" style="background-color:#B0E0E6;">Transfer Gaji</a>
+                        <form action="{{ route('data.employees.delete', $employees->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{ route('data.employees.edit', $employees->id) }}" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
+                            <button class="btn btn-outline btn-sm" style="background-color: #ff9b9b;">Delete</button>
+                            <a href="http://" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
+                        </form>
                     </td>
                 </tr>
+                @empty
+                    <tr>
+                        <td colspan="5">
+                            Data Karyawan Belum Tersedia
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
       </div>

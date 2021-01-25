@@ -22,16 +22,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'penggajian'], function(){
     Route::get('form-index','PaymenthomeController@index')->name('penggajian.home.form-index');
 });
-Route::group(['prefix' => 'penggajian'], function(){
-    Route::get('tampil-index','PegawaiController@index')->name('data.pegawai.tampil-index');
-    Route::get('tampil-create','PegawaiController@create')->name('data.pegawai.tampil-create');
-    Route::post('store','PegawaiController@store')->name('data.pegawai.store');
+Route::group(['prefix' => 'employees'], function(){
+    Route::get('index','EmployeessController@index')->name('data.employees.index');
+    Route::get('create','EmployeessController@create')->name('data.employees.create');
+    Route::post('store','EmployeessController@store')->name('data.employees.store');
+    Route::delete('delete/{employees}','EmployeessController@destroy')->name('data.employees.delete');
+    Route::get('edit/{employees}','EmployeessController@edit')->name('data.employees.edit');
+    Route::put('update/{employees}','EmployeessController@update')->name('data.employees.update');
 });
-Route::group(['prefix' => 'penggajian'], function(){
-    Route::get('index','DatagajiController@index')->name('data.gaji.index');
-    Route::get('creategaji','DatagajiController@create')->name('data.gaji.creategaji');
+Route::group(['prefix' => 'type'], function(){
+    Route::get('index','TypeController@index')->name('data.type.index');
+    Route::get('create','TypeController@create')->name('data.type.create');
+    Route::post('store','TypeController@store')->name('data.type.store');
 });
-Route::group(['prefix' => 'penggajian'], function(){
-    Route::get('show-index','DatalemburController@index')->name('data.lembur.show-index');
-    Route::get('create','DatalemburController@create')->name('data.lembur.create');
+Route::group(['prefix' => 'price'], function(){
+    Route::get('index','PriceController@index')->name('data.price.index');
+    Route::get('create','PriceController@create')->name('data.price.create');
+    Route::post('store','PriceController@store')->name('data.price.store');
+});
+Route::group(['prefix' => 'payment'], function(){
+    Route::get('index','PaymentController@index')->name('data.payment.index');
+    Route::get('create','PaymentController@create')->name('data.payment.create');
+    Route::post('store','PaymentController@store')->name('data.payment.store');
 });
