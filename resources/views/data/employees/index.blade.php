@@ -56,7 +56,7 @@
                             @method('DELETE')
                             <a href="{{ route('data.employees.edit', $employees->id) }}" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
                             <button class="btn btn-outline btn-sm" style="background-color: #ff9b9b;">Delete</button>
-                            <a href="http://" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
+                            <a href="{{ route('data.employees.show', $employees->id) }}" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
                         </form>
                     </td>
                 </tr>

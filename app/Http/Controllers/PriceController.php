@@ -42,6 +42,38 @@ class PriceController extends Controller
         ]);
         $prices->save();
 
+        return redirect()->back()->with(['success' => 'data price berhasil dibuat' ]);
+    }
+    public function edit($id)
+    {
+        $types = Type::all();
+
+        $prices = Price::findOrFail($id);
+
+        return view("data.price.edit", compact('prices','types'));
+    }
+    public function update(Request $request, $id)
+    {
+        $prices = Price::find($id);
+
+        $prices->update($request-> all());
+
+        return redirect()->back()->with(['success' => 'data price berhasil diedit' ]);
+    }
+    public function destroy($id)
+    {
+        $prices = Price::find($id);
+
+        $prices -> delete($prices->all());
+
         return redirect()->back();
+    }
+    public function show($id)
+    {
+        $types = Type::all();
+
+        $prices = Price::find($id);
+
+        return view('data.price.show', compact('prices','types'));
     }
 }

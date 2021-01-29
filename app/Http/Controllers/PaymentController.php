@@ -43,4 +43,36 @@ class PaymentController extends Controller
 
         return redirect()->back()->with(['success' => 'data pembayaran berhasil dibuat' ]);
     }
+    public function edit($id)
+    {
+        $employeess = Employees::all();
+        $prices = Price::all();
+        $payments = Payment::findOrFail($id);
+
+        return view("data.payment.edit", compact('payments','prices','employeess'));
+    }
+    public function update(Request $request, $id)
+    {
+        $payments = Payment::find($id);
+
+        $payments->update($request-> all());
+
+        return redirect()->back()->with(['success' => 'data payment berhasil diedit' ]);
+    }
+    public function destroy($id)
+    {
+        $payments = Payment::find($id);
+
+        $payments -> delete($payments->all());
+
+        return redirect()->back();
+    }
+    public function show($id)
+    {
+        $employeess = Employees::all();
+        $prices = Price::all();
+        $payments = Payment::find($id);
+
+        return view('data.payment.show', compact('payments','prices','employeess'));
+    }
 }

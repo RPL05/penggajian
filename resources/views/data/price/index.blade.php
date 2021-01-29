@@ -46,18 +46,17 @@
             <tbody>
                 @foreach($prices as $price)
                 <tr>
-                    <td></td>
                     <td>{{ $price->gaji_pokok }}</td>
                     <td>{{ $price->uang_lembur }}</td>
                     <td>{{ $price->jam_lembur }}</td>
                     <td>{{ $price->total_gaji }}</td>
                     <td>
-                        <form action="" method="POST">
+                        <form action="{{ route('data.price.delete', $price->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
+                            <a href="{{ route('data.price.edit', $price->id) }}" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
                             <button class="btn btn-outline btn-sm" style="background-color: #ff9b9b;">Delete</button>
-                            <a href="http://" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
+                            <a href="{{ route('data.price.show', $price->id) }}" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
                         </form>
                     </td>
                 </tr>

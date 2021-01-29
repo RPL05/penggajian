@@ -32,6 +32,34 @@ class TypeController extends Controller
 
        $types->save();
 
-       return redirect()->back();
+       return redirect()->back()->with(['success' => 'data type berhasil dibuat' ]);
+    }
+    public function edit($id)
+    {
+        $types = Type::findOrFail($id);
+
+        return view("data.type.edit", compact('types'));
+    }
+    public function update(Request $request, $id)
+    {
+        $types = Type::find($id);
+
+        $types->update($request-> all());
+
+        return redirect()->back()->with(['success' => 'data type berhasil diedit' ]);
+    }
+    public function destroy($id)
+    {
+        $types = Type::find($id);
+
+        $types -> delete($types->all());
+
+        return redirect()->back();
+    }
+    public function show($id)
+    {
+        $types = Type::find($id);
+
+        return view('data.type.show', compact('types'));
     }
 }

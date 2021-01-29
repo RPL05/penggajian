@@ -49,12 +49,12 @@
                     <td>{{ $type->lembur }}</td>
                     <td>{{ $type->bonus }}</td>
                     <td>
-                        <form action="" method="POST">
+                        <form action="{{ route('data.type.delete', $type->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
+                            <a href="{{ route('data.type.edit', $type->id) }}" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
                             <button class="btn btn-outline btn-sm" style="background-color: #ff9b9b;">Delete</button>
-                            <a href="http://" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
+                            <a href="{{ route('data.type.show', $type->id) }}" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
                         </form>
                     </td>
                 </tr>

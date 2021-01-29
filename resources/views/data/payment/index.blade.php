@@ -44,21 +44,23 @@
               </tr>
             </thead>
             <tbody>
+                @foreach ($payments as $payment)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $payment->employees->nip }}</td>
+                    <td>{{ $payment->no_rek }}</td>
+                    <td>{{ $payment->price->total_gaji }}</td>
+                    <td>{{ $payment->tgl_transfer }}</td>
                     <td>
                         <form action="" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
+                            <a href="{{ route('data.payment.edit', $payment->id) }}" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>
                             <button class="btn btn-outline btn-sm" style="background-color: #ff9b9b;">Delete</button>
-                            <a href="http://" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
+                            <a href="{{ route('data.payment.show', $payment->id) }}" class="btn btn-outline btn-sm" style="background-color: #B0E0E6;">Detail</a>
                         </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
       </div>

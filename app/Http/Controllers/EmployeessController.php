@@ -74,4 +74,9 @@ class EmployeessController extends Controller
 
         return redirect()->back();
     }
+    public function show($id)
+    {
+        $employeess = Employees::find($id);
+        return view('data.employees.show', compact('employeess'));
+    }
 }
