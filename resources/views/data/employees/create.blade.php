@@ -9,7 +9,7 @@
         </div>
         <div class="card border-0 shadow">
           <div class="card-body">
-            <form action="{{ route('data.employees.store') }}" enctype="multipart/form-data" method="post">
+            <form action="{{ route('data.employees.store') }}" method="post">
                 @csrf
                 @if(session('success'))
                     <div class="alert alert-success">

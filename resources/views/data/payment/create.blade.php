@@ -9,7 +9,7 @@
         </div>
         <div class="card border-0 shadow">
           <div class="card-body">
-            <form action="{{ route('data.payment.store') }}" enctype="multipart/form-data" method="post">
+            <form action="{{ route('data.payment.store') }}" method="post">
                 @csrf
                 @if(session('success'))
                     <div class="alert alert-success">
@@ -23,7 +23,7 @@
                             <select name="employees_id" id="" class="form-control">
                                 <option value="">Pilih Employees</option>
                                 @foreach($employeess as $employees)
-                                    <option value="{{$employees->id}}">{{$employees->nama}}</option>
+                                    <option value="{{$employees->id}}">{{$employees->nip}}</option>
                                 @endforeach
                             </select>
                         </div>

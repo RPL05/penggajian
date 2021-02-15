@@ -13,13 +13,10 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Type</label>
-                            <select name="type_id" id="" class="form-control">
-                                <option value="">Pilih Type</option>
-                                @foreach($types as $type)
-                                    <option value="{{$type->id}}">Gaji = {{$type->gaji}}</option>
-                                    <option value="{{$type->id}}">Lembur = {{$type->lembur}}</option>
-                                @endforeach
-                            </select>
+                            @foreach ($types as $type)
+                            <input type="number" name="type_id" id="type_id" value="" placeholder="{{ $type->gaji }}" class="form-control" disabled>
+                            <span class="text-danger" id="type_id"></span>
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <label for="gaji_pokok">Gaji Pokok</label>

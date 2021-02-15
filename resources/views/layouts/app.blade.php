@@ -45,6 +45,12 @@
                                 <li class="nav-item">
                                     <a href="{{ route('data.payment.index') }}" class="nav-link text-light">Payment</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('create.sms') }}" class="nav-link text-light">{{ __('SMS' )}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('create.email') }}" class="nav-link text-light">{{ __('EMAIL' )}}</a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -54,8 +60,6 @@
                         </main>
                     </div>
                 </div>
-            </div>
-        </div>
             </div>
         </div>
 </body>

@@ -8,7 +8,6 @@
                 <ol class="breadcrumb bg-white">
                     <li class="breadcrumb-item active" aria-current="page">
                         <h6 style="margin-left: -18px;">Aplikasi Penggajian Karyawan</h6>
-
                     </li>
                     {{--  <div class="d-flex" style="margin-left: auto;">
                         <img src="{{ asset('image/images.jpg') }}" alt="" class="rounded-circle" width="27px" height="27px">
@@ -51,7 +50,7 @@
                     <td>{{ $payment->price->total_gaji }}</td>
                     <td>{{ $payment->tgl_transfer }}</td>
                     <td>
-                        <form action="" method="POST">
+                        <form action="{{ route('data.payment.delete', $payment->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <a href="{{ route('data.payment.edit', $payment->id) }}" class="btn btn-outline btn-sm" style="background-color:#86c1c9;">Edit</a>

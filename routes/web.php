@@ -58,3 +58,10 @@ Route::group(['prefix' => 'payment'], function(){
     Route::delete('delete/{payment}','PaymentController@destroy')->name('data.payment.delete');
     Route::get('show/{payment}','PaymentController@show')->name('data.payment.show');
 });
+
+//sms
+Route::get('create/sms','SmsController@create')->name('create.sms');
+Route::post('kirim/sms','SmsController@store')->name('kirim.sms');
+
+//email
+Route::get('create/email','NotifikasiController@create')->name('create.email');

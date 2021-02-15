@@ -13,21 +13,17 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Nip</label>
-                            <select name="employees_id" id="" class="form-control">
-                                <option value="">Pilih Employees</option>
                                 @foreach($employeess as $employees)
-                                    <option value="{{$employees->id}}">{{$employees->nama}}</option>
+                                <input type="number" name="employes_id" id="employes_id" value="" placeholder="{{ $employees->nip }}" class="form-control" disabled>
+                                <span class="text-danger" id="employes_id"></span>
                                 @endforeach
-                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Total Gaji</label>
-                            <select name="price_id" id="" class="form-control">
-                                <option value="">Pilih Price</option>
-                                @foreach($prices as $price)
-                                    <option value="{{$price->id}}">{{$price->total_gaji}}</option>
-                                @endforeach
-                            </select>
+                            @foreach($prices as $price)
+                            <input type="number" name="price_id" id="price_id" value="" placeholder="{{ $price->total_gaji }}" class="form-control" disabled>
+                            <span class="text-danger" id="price_id"></span>
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <label for="no_rek">Nomor Rekening</label>
