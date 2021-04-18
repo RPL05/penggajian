@@ -13,6 +13,7 @@ class SmsController extends Controller
         return view('notifikasi.sms.create');
     }
     public function store(Request $request)
+
     {
         $sms = Sms::create([
             'number' => $request->number,

@@ -32,7 +32,9 @@ class TypeController extends Controller
 
        $types->save();
 
-       return redirect()->back()->with(['success' => 'data type berhasil dibuat' ]);
+       return redirect()->route('data.type.index')->with(['success' => "Terimakasih telah melakukan permintaan pada kami.            
+       Silahkan cek sms dan email kamu untuk melihat status permintaan barang kamu, terimakasih."
+        ]);
     }
     public function edit($id)
     {

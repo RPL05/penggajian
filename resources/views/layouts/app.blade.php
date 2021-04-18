@@ -54,9 +54,80 @@
                             </ul>
                         </div>
                     </nav>
-                    <div class="col-md-10">
+
+                    <div class="col-md-10 px-1">
+                        <div aria-label="breadcrumb">
+                            <ul class="breadcrumb bg-white">
+                                <li class="breadcrumb-item">
+                                    <h5 class="text-dark pt-2">
+                                        Aplikasi Penggajian Karyawan
+                                    </h5>
+                                </li>
+                                <li class="ml-auto">
+                                    @auth()
+                                        @can('view_users')
+                                            <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
+                                                <a class="nav-link text-dark" href="{{ route('users.index') }}">
+                                                    Users
+                                                </a>
+                                            </li>
+                                        @endcan
+
+                                        @can('view_posts')
+                                            <li class="nav-item {{ Request::is('posts*') ? 'active' : '' }}">
+                                                <a class="nav-link text-dark" href="{{ route('posts.index') }}">
+                                                    Posts
+                                                </a>
+                                            </li>
+                                        @endcan
+                                    @endauth
+                                    @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    @can('view_roles')
+                                        <li class="nav-item {{ Request::is('roles*') ? 'active' : '' }}">
+                                            <a class="nav-link text-dark" href="{{ route('roles.index') }}">
+                                                Roles
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ auth()->user()->name }}
+                                            <span class="badge badge-warning ">{{ auth()->user()->roles->first()->name }}</span>
+                                            <span class="caret"></span>
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                                </li>
+                            </ul>
+                        </div>
                         <main class="py-4">
+                            <div class="container">
+                                <div id="flash-msg">
+                                    @include('flash::message')
+                                </div>
                             @yield('content')
+                            </div>
                         </main>
                     </div>
                 </div>

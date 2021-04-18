@@ -65,3 +65,10 @@ Route::post('kirim/sms','SmsController@store')->name('kirim.sms');
 
 //email
 Route::get('create/email','NotifikasiController@create')->name('create.email');
+
+//Role and Premissions
+Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('posts', 'PostController');
+});
