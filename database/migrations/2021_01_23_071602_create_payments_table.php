@@ -19,6 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->unsignedInteger('price_id');
             $table->string('no_rek')->unique();
             $table->string('tgl_transfer');
+            $table->string('no_telp');
+            $table->string('email');
             $table->timestamps();
         });
     }

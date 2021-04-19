@@ -46,6 +46,14 @@
                             <input type="date" name="tgl_transfer" id="tgl_transfer" value="" class="form-control" required>
                             <span class="text-danger" id="tgl_transfer"></span>
                         </div>
+                            <div class="form-group">
+                                <label for="">Nomor Telepon</label>
+                                <input type="text" name="no_telp" class="form-control" id="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" name="email" class="form-control" id="">
+                            </div>
                     </div>
                 </div>
                 <div class="pt-2 mb-2">

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Price;
 use App\Employees;
 use App\Payment;
+use App\Mail\NotifPayment;
+use App\Mail\NotifPembayaran;
+use Nexmo\Laravel\Facade\Nexmo;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -31,13 +34,26 @@ class PaymentController extends Controller
             'price_id'      => 'required',
             'no_rek'        => 'required',
             'tgl_transfer'  => 'required',
+            'no_telp'       => 'required',
+            'email'         => 'required',
         ]);
         $payments = Payment::create([
             'employees_id'    => $request->employees_id,
             'price_id'        => $request->price_id,
             'no_rek'          => $request->no_rek,
             'tgl_transfer'    => $request->tgl_transfer,
+            'no_telp'         => $request->no_telp,
+            'email'           => $request->email,
         ]);
+
+        Nexmo::message()->send([
+            'to'   => $request->no_telp,
+            'from' => '089698922721 BAYU',
+            'text' => 'heloo ges'
+        ]);
+
+
+        \Mail::to($payments->email)->send(new NotifPembayaran);
 
         $payments->save();
 
